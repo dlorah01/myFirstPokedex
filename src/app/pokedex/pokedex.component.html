@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="pokedex-container">
+    <div class="pokedex-item" [class.hidden]="selectedPokemon">
+      <app-poke-list
+        [selectedPokemon]="selectedPokemon"
+        (emitSelection)="updatePokemonSelection($event)"
+      ></app-poke-list>
+    </div>
+    <div class="pokedex-item" [class.hidden]="!selectedPokemon">
+      <ng-container *ngIf="selectedPokemon">
+        <app-poke-screen
+          [selectedPokemon]="selectedPokemon"
+          (emitClean)="cleanSelection()"
+        ></app-poke-screen>
+        <app-poke-description
+          [selectedPokemon]="selectedPokemon"
+        ></app-poke-description>
+      </ng-container>
+      <img
+        class="pokeball-watermark"
+        *ngIf="!selectedPokemon"
+        src="pokeball.svg"
+        alt="pokeball silhuoette"
+      />
+    </div>
+  </div>
+</div>

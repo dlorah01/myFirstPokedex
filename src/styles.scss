@@ -1,1 +1,138 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-white: #F7F7F7;
+  --color-gray: #ECECEC;
+  --color-black: #1C1C1C;
+
+  --type-bug: #A8B820;
+  --type-dark: #705848;
+  --type-dragon: #7038F8;
+  --type-electric: #F8D030;
+  --type-fairy: #F0B6BC;
+  --type-fighting: #C03028;
+  --type-fire: #F08030;
+  --type-flying: #A890F0;
+  --type-ghost: #705898;
+  --type-grass: #78C850;
+  --type-ground: #E0C068;
+  --type-ice: #98D8D8;
+  --type-normal: #A8A878;
+  --type-rock: #B8A038;
+  --type-poison: #A040A0;
+  --type-psychic: #F85888;
+  --type-steel: #B8B8D0;
+  --type-water: #6890F0;
+}
+
+.normal {
+  background-color: var(--type-normal);
+  color: var(--color-black);
+}
+
+.fire {
+  background-color: var(--type-fire);
+  color: var(--color-black);
+}
+
+.water {
+  background-color: var(--type-water);
+  color: var(--color-white);
+}
+
+.grass {
+  background-color: var(--type-grass);
+  color: var(--color-black);
+}
+
+.electric {
+  background-color: var(--type-electric);
+  color: var(--color-black);
+}
+
+.ice {
+  background-color: var(--type-ice);
+  color: var(--color-black);
+}
+
+.fighting {
+  background-color: var(--type-fighting);
+  color: var(--color-white);
+}
+
+.poison {
+  background-color: var(--type-poison);
+  color: var(--color-white);
+}
+
+.ground {
+  background-color: var(--type-ground);
+  color: var(--color-black);
+}
+
+.flying {
+  background-color: var(--type-flying);
+  color: var(--color-black);
+}
+
+.psychic {
+  background-color: var(--type-psychic);
+  color: var(--color-black);
+}
+
+.bug {
+  background-color: var(--type-bug);
+  color: var(--color-black);
+}
+
+.rock {
+  background-color: var(--type-rock);
+  color: var(--color-black);
+}
+
+.ghost {
+  background-color: var(--type-ghost);
+  color: var(--color-white);
+}
+
+.dark {
+  background-color: var(--type-dark);
+  color: var(--color-white);
+}
+
+.dragon {
+  background-color: var(--type-dragon);
+  color: var(--color-white);
+}
+
+.steel {
+  background-color: var(--type-steel);
+  color: var(--color-black);
+}
+
+.fairy {
+  background-color: var(--type-fairy);
+  color: var(--color-black);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #333;
+  color: #fff;
+}
+
+
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,70 @@
+<div class="pokelist-container">
+  <div class="search-bar-container">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (keydown)="onKeydown($event)"
+      placeholder="Search by name or number"
+    />
+    <button
+      class="search-control"
+      (click)="searchPokemon()"
+      [disabled]="!searchQuery.length"
+    >
+      Search
+    </button>
+  </div>
+
+  <div *ngIf="currentPokemon" class="pokemon-details">
+    <h2>{{ currentPokemon.name | titlecase }}</h2>
+    <img
+      [src]="currentPokemon.sprites.front_default"
+      alt="{{ currentPokemon.name }}"
+    />
+    <!-- Add more Pokémon details here if needed -->
+  </div>
+
+  <div *ngIf="!currentPokemon" class="pokelist-items-list">
+    <div
+      *ngFor="let pokemon of pokemonList"
+      class="pokelist-item"
+      [class.active]="
+        selectedPokemon &&
+        selectedPokemon.id.toString() === extractPokemonId(pokemon.url)
+      "
+      (click)="selectPokemon(extractPokemonId(pokemon.url))"
+    >
+      <div class="pokemon-number">
+        # {{ parsePokemonIdTo4Numbers(extractPokemonId(pokemon.url)) }}
+      </div>
+      <div class="pokemon-name">{{ pokemon.name | titlecase }}</div>
+      <div class="pokemon-image-container">
+        <img
+          [src]="
+            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
+            extractPokemonId(pokemon.url) +
+            '.png'
+          "
+          [alt]="pokemon.name"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-controls" *ngIf="!currentPokemon">
+    <button
+      class="pagination-control"
+      (click)="previousPage()"
+      [disabled]="offset === 0"
+    >
+      Anterior
+    </button>
+    <button
+      class="pagination-control"
+      (click)="nextPage()"
+      [disabled]="offset + limit >= totalCount"
+    >
+      Siguiente
+    </button>
+  </div>
+</div>

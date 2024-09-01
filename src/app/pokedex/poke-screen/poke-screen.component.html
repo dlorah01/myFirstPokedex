@@ -1,0 +1,29 @@
+<div class="pokescreen-container" [ngClass]="getPokemonType()">
+  <div class="data-container" [ngClass]="getPokemonType()">
+    <div class="name">
+      {{ selectedPokemon?.name | titlecase }}
+    </div>
+    <div class="number">
+      #{{ parsePokemonIdTo4Numbers(selectedPokemon?.id!.toString()) }}
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="back-control" (click)="goBack()">Back</button>
+  </div>
+  <div class="image-container">
+    <img
+      class="pokeball-watermark"
+      *ngIf="selectedPokemon"
+      src="pokeball.svg"
+      alt="pokeball silhuoette"
+    />
+    <img
+      *ngIf="selectedPokemon"
+      class="pokemon-image"
+      [class.loaded]="imageLoaded"
+      [src]="getPokemonOfficialImage()"
+      (load)="onImageLoad()"
+      alt="Pokémon Image"
+    />
+  </div>
+</div>

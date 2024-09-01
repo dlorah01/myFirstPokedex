@@ -1,0 +1,20 @@
+<div class="pokedescription-container">
+  <div class="data-container" [ngClass]="getPokemonType()">
+    <div class="description-item">
+      <div class="content">{{ selectedPokemon?.height }}</div>
+      <div class="title">Height</div>
+    </div>
+
+    <div class="description-item">
+      <div class="content">
+        {{selectedPokemon?.types?.[0]?.type?.name | titlecase}}
+      </div>
+      <div class="title">Type</div>
+    </div>
+
+    <div class="description-item">
+      <div class="content">{{ selectedPokemon?.weight }}</div>
+      <div class="title">Weight</div>
+    </div>
+  </div>
+</div>
