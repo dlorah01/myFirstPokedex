@@ -10,6 +10,11 @@
   justify-content: stretch;
 }
 
+.search-bar-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .search-bar-container,
 .pokelist-items-list,
 .pagination-controls {
