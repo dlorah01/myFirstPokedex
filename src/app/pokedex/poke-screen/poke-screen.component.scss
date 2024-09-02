@@ -39,19 +39,19 @@
       padding: 6px 12px;
       border: none;
       border-radius: 6px;
-      background-color: #555;
-      color: #fff;
+      background-color: var(--color-gray-4);
+      color: var(--color-white);
       cursor: pointer;
       transition: all 0.2s ease;
       font-size: 16px;
       flex: 1;
 
       &:hover:not([disabled]) {
-        background-color: #666;
+        background-color: var(--color-gray-5);
       }
 
       &:active:not([disabled]) {
-        background-color: #777;
+        background-color: var(--color-gray-6);
       }
 
       &[disabled] {

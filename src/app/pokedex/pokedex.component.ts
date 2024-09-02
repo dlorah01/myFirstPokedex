@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeAPIService } from './services/pokeapi.service';
 import { PokemonInterface } from './interface/pokemon.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokedex',
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss',
 })
-export class PokedexComponent implements OnInit {
+export class PokedexComponent {
   selectedPokemon?: PokemonInterface;
+  updateSubscription?: Subscription;
 
   constructor(private pokeAPIService: PokeAPIService) {}
 
-  ngOnInit(): void {}
-
   updatePokemonSelection(id: string) {
-    this.pokeAPIService
+    this.updateSubscription = this.pokeAPIService
       .getPokemon(id)
       .subscribe((pokemon: PokemonInterface) => {
         this.selectedPokemon = pokemon;
@@ -24,5 +24,9 @@ export class PokedexComponent implements OnInit {
 
   cleanSelection() {
     this.selectedPokemon = undefined;
+  }
+
+  ngOnDestroy() {
+    this.updateSubscription?.unsubscribe();
   }
 }

@@ -4,7 +4,7 @@
       type="text"
       [(ngModel)]="searchQuery"
       (keydown)="onKeydown($event)"
-      placeholder="Search by name or number"
+      placeholder="Search by pokemon number"
     />
     <button
       class="search-control"
@@ -57,14 +57,14 @@
       (click)="previousPage()"
       [disabled]="offset === 0"
     >
-      Anterior
+      Back
     </button>
     <button
       class="pagination-control"
       (click)="nextPage()"
       [disabled]="offset + limit >= totalCount"
     >
-      Siguiente
+      Next
     </button>
   </div>
 </div>

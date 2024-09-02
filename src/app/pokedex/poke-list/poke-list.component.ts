@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PokemonInterface } from '../interface/pokemon.interface';
 import { PokeAPIService } from '../services/pokeapi.service';
+import { Subscription } from 'rxjs';
+import { PokemonList } from '../interface/pokemon-list.interface';
+import { PokemonListItem } from '../interface/pokemon-list-item.interface';
 
 @Component({
   selector: 'app-poke-list',
@@ -10,12 +13,13 @@ import { PokeAPIService } from '../services/pokeapi.service';
 export class PokeListComponent {
   @Input() selectedPokemon?: PokemonInterface;
   @Output() emitSelection: EventEmitter<string> = new EventEmitter();
-  pokemonList: { name: string; url: string }[] = [];
+  pokemonList: Array<PokemonListItem> = [];
   currentPokemon: PokemonInterface | null = null;
   offset = 0;
   limit = 20;
   totalCount = 0;
   searchQuery: string = '';
+  fetchSubscription?: Subscription;
 
   constructor(private pokeAPIService: PokeAPIService) {}
 
@@ -24,9 +28,9 @@ export class PokeListComponent {
   }
 
   fetchPokemonList(): void {
-    this.pokeAPIService
+    this.fetchSubscription = this.pokeAPIService
       .getPokemonList(this.offset, this.limit)
-      .subscribe((data) => {
+      .subscribe((data: PokemonList) => {
         this.pokemonList = data.results;
         this.totalCount = data.count;
       });
@@ -83,5 +87,9 @@ export class PokeListComponent {
     } else if (value.key === 'Escape') {
       this.clearSearch();
     }
+  }
+
+  ngOnDestroy() {
+    this.fetchSubscription?.unsubscribe();
   }
 }

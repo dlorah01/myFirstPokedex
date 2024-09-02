@@ -1,8 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --color-white: #F7F7F7;
-  --color-gray: #ECECEC;
-  --color-black: #1C1C1C;
+  --color-gray-1: #222;
+  --color-gray-2: #333;
+  --color-gray-3: #444;
+  --color-gray-4: #555;
+  --color-gray-5: #666;
+  --color-gray-6: #777;
+
 
   --type-bug: #A8B820;
   --type-dark: #705848;
@@ -122,8 +127,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--color-gray-2);
+  color: var(--color-white);
 }
 
 
